@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Can we automate and improve our coding tests for possible hires?</title>
+		<style>
+			body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3 {
+	font-weight: 400;
+	margin-bottom: 0;
+}
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 2em; }
+.remark-slide-content h3 { font-size: 1.6em; }
+.footnote {
+	position: absolute;
+	bottom: 3em;
+}
+li p { line-height: 1.25em; }
+.red { color: #fa0000; }
+.large { font-size: 2em; }
+a, a > code {
+	color: rgb(249, 38, 114);
+	text-decoration: none;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+.remark-code, .remark-inline-code { font-family: "Bitstream Vera Sans Mono", "Courier", monospace; }
+.remark-code-line-highlighted     { background-color: #373832; }
+.pull-left {
+	float: left;
+	width: 47%;
+}
+.pull-right {
+	float: right;
+	width: 47%;
+}
+.pull-right ~ p {
+	clear: both;
+}
+#slideshow .slide .content code {
+	font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+	font-size: 0.9em;
+	padding: 15px;
+}
+.main-title, .title {
+	background: #272822;
+	color: #777872;
+	text-shadow: 0 0 20px #333;
+}
+.title h1, .title h2, .main-title h1, .main-title h2 {
+	color: #f3f3f3;
+	line-height: 0.8em;
+}
+/* Custom */
+.remark-code {
+	display: block;
+	padding: 0.5em;
+}
+
+		</style>
+	</head>
+	<body>
+		<textarea id="source">
+# Can we automate and improve our coding tests for possible hires?
+
+---
+# Current Situation
+
+- Candidate goes through initial screening
+- Candidate is tracked through Greenhouse *- new!*
+- Zip file is emailed by HR to the candidate.
+  - Includes supporting files + brief
+- On completion, developer will zip up project and upload to Greenhouse. *- new!*
+- When notified, someone...
+  - Downloads the zip file
+  - Extracts to a certain directory in our challenge repository
+  - Creates a pull request
+  - Assigns a developer to review
+
+
+---
+# Problems
+
+- Manual labour
+- No idea of how the code has progressed over time.
+  - Thought process / learnings / how they started
+- No idea on their git experience outside of code
+  - Do they commit regularly?
+  - Do they add valuable commit messages?
+  - Are their pull requests well laid out and explained?
+- No idea of how much time the developer has actually spent on the work
+  - Brief recommends 4-5 hours
+  - Ask to complete within a week.
+  - Ends up being evident in the follow up pair-programming session.
+
+---
+# Why?
+
+- Been through it recently
+- Inspired by another company
+- Small project but with new experiences
+  - Go Lang
+
+---
+# What I Built
+
+#### Small HR admin dashboard
+- List assignees
+- Create assignees
+  - Creates new **private** github repository
+  - Assign user to repository
+  - Add an introduction readme to the repo.
+
+#### Webpage for a developer to 'begin' the timer
+- Adds the official brief to the repository
+- Any commits after a certain period will not be considered.
+
+---
+# Showtime!
+
+		</textarea>
+		<script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+		<script>
+			var slideshow = remark.create();
+		</script>
+		<script></script>
+	</body>
+</html>

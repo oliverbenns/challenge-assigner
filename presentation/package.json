@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "markdown-to-slides slides.md -o slides.html && open slides.html",
+    "build": "markdown-to-slides slides.md -o slides.html"
+  },
+  "dependencies": {
+    "markdown-to-slides": "^1.0.5"
+  }
+}

@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <title>Go-Hack HR Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 offset-md-3">
+          <h1>Go-Hack HR Admin</h1>
+
+          <h3>Challenges</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">GH Username</th>
+                <th scope="col">Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>ottoooo@gmail.com</td>
+                <td>ottoman</td>
+                <td>Yeah</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>jacob@outlook.com</td>
+                <td>jake1337</td>
+                <td>Nah</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>larry@gmail.com</td>
+                <td>larrycodes</td>
+                <td>Yeah</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Add new challenge</h3>
+          <div id="banner-container"></div>
+          <form id="form">
+            <label for="first-name">First Name</label>
+            <input type="text" class="form-control" placeholder="First Name" id="first-name">
+
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" placeholder="Last Name" id="last-name">
+
+            <div>
+              <div>
+                <label for="challenge-type">Challenge/Role Type</label>
+              </div>
+              <select class="custom-select" id="challenge-type">
+                <option selected>Choose...</option>
+                <option value="1">React + Redux</option>
+                <option value="2">Ruby on Rails</option>
+                <option value="2">Ruby on Rails (Senior)</option>
+                <option value="3">Go</option>
+              </select>
+            </div>
+
+            <label for="basic-url">Github Username</label>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon3">https://github.com/</span>
+              <input type="text" class="form-control" id="input">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Send challenge" />
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.querySelector('#form');
+      const input = document.querySelector('#input')
+      const bannerContainer = document.querySelector('#banner-container')
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const opts = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username: input.value }),
+        };
+
+        fetch('http://localhost:8000/api/challenge/create', opts)
+          .then(res => res.json())
+          .then(res => {
+            console.log('res', res);
+            const banner = document.createElement('div');
+            banner.classList.add('alert');
+            banner.classList.add('alert-success');
+            banner.innerHTML = `<a href="${res.html_url}" target="_blank">${res.name}</a> created :)`;
+            bannerContainer.appendChild(banner);
+          })
+      })
+    </script>
+  </body>
+</html>

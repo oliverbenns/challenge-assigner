@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Go-Hack Challenge</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 offset-md-3">
+          <h1>Begin Challenge</h1>
+          <div id="banner-container"></div>
+          <p>All prepared for your challenge? Please make sure you've read and understood anything you need to in the repository's README.md</p>
+          <p>You will have 4 hours time to complete this challenge. Commits after this period will not be counted towards assessment</p>
+          <p>By clicking the button below, you will begin the timer. The brief will be added to the repository under the file BRIEF.md</p>
+          <p>Please enter your repository name to begin</p>
+
+          <form id="form">
+            <label for="basic-url">Repository name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="input" placeholder="username-20180208143159">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Start challenge" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.querySelector('#form');
+      const input = document.querySelector('#input')
+      const bannerContainer = document.querySelector('#banner-container')
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const opts = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ reponame: input.value }),
+        };
+
+        fetch('http://localhost:8000/api/challenge/start', opts)
+          .then(res => res.json())
+          .then(res => {
+            const banner = document.createElement('div');
+            banner.classList.add('alert');
+            banner.classList.add('alert-success');
+            banner.innerHTML = `<a href="${res.content.html_url}" target="_blank">${res.content.name}</a> added! :)`;
+            bannerContainer.appendChild(banner);
+          })
+      })
+    </script>
+  </body>
+</html>
