@@ -1,4 +1,4 @@
-# GA Hackathon
+# Challenge Assigner
 
 Project for General Assembly's Festivus Hackathon, NYC, 8th Feb 2018.
 

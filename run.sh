@@ -1,1 +1,1 @@
-go build && ./ga-hackathon
+go build && ./challenge-assigner
